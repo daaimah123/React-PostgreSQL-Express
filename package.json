@@ -1,0 +1,19 @@
+{
+  "name": "final_assessment",
+  "version": "1.0.0",
+  "description": "final assessment app shell with postgres, express and react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/daaimah123/FinalAssessment.git"
+  },
+  "author": "Daaimah Tibrey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daaimah123/FinalAssessment/issues"
+  },
+  "homepage": "https://github.com/daaimah123/FinalAssessment#readme"
+}
