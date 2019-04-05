@@ -1,7 +1,8 @@
 Design a React App that uses Express and PostgreSQL
+===========
 
 React Set Up
-===========
+=========
 
 NODE
 `nvm install node`
