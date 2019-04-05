@@ -60,12 +60,12 @@ class Read extends Component {
         return <div>Loading...</div>;
       } else {
         return (
-          <ul id="results">
-            {items/* {items.map(item => (
+          <ul>
+            {items.map(item => (
               <li key={item.name}>
                 {item.name} {item.price}
               </li>
-            ))} */}
+            ))}
           </ul>
         );
       }
