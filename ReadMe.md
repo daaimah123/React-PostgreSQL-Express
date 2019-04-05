@@ -30,19 +30,12 @@ PostgreSQL (database)
 Package.json 
 `Npm init`
 
-<code>
 Pool Manages PostgreSQL Clients
-  <code>  
-    
-  <code>  
+````    
 const { Pool } = require('pg')
-<code>
 
-<code>
 //local psql connection
-<code>
 
-<code>
 const pool = new Pool({
     user: 'codetl',
     host: 'localhost',
@@ -51,31 +44,23 @@ const pool = new Pool({
     port: 5432,
   })
 
-<code>
 //production psql connection
 const pool = new Pool({
-<code>
 
-<code>
    // 'postgres://localhost:5432/database_name'
    connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/eventonicaroutes',
-<code>   
    
- <code>  
    // Use SSL but only in production
    ssl: process.env.NODE_ENV === 'production'
  });
-<code>
-
+```
 
 Check the package.json to make sure start location path matches the server location
 
-
-<code>
+```
 "scripts": {
      "start": "node folder/file.ext",
-<code>
-
+```
 
 
 In this app you will be able to: 
