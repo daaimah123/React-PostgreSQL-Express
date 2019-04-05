@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+//TODO: hook up react part; currently only express and postgress are connected && add set up notes to MD
+
 
 /* =============================================  Pool  =================================================
 ================================================================================================================= */
@@ -68,4 +70,4 @@ app.get('/anythingiwant', async (req, res) =>{
   /* =============================================  Listening Message  =======================================================
 ================================================================================================================= */
 
-  app.listen(port, () => console.log(`Back-End Express Server "Eventonica-Routes" is Listening on Port ${port}!`))
+  app.listen(port, () => console.log(`Back-End Express Server "Final_Assessment" is Listening on Port ${port}!`))
