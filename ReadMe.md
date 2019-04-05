@@ -32,11 +32,17 @@ Package.json
 
 <code>
 Pool Manages PostgreSQL Clients
+  <code>  
+    
+  <code>  
 const { Pool } = require('pg')
+<code>
 
-
-
+<code>
 //local psql connection
+<code>
+
+<code>
 const pool = new Pool({
     user: 'codetl',
     host: 'localhost',
@@ -45,18 +51,17 @@ const pool = new Pool({
     port: 5432,
   })
 
-
-  
+<code>
 //production psql connection
 const pool = new Pool({
+<code>
 
-
-
+<code>
    // 'postgres://localhost:5432/database_name'
    connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/eventonicaroutes',
+<code>   
    
-   
-   
+ <code>  
    // Use SSL but only in production
    ssl: process.env.NODE_ENV === 'production'
  });
