@@ -15,6 +15,8 @@ REACT (subfolder - client)
 
 Create component files and make sure they are imported (to files that are using them) and exported (in their own component) file appropiately.
 
+
+Exampe of Read (GET all) component file:
 ````
 import React, { Component } from 'react';
 import '../App.css';
