@@ -76,6 +76,8 @@ class Read extends Component {
 export default Read;
 ````
 
+For extra built in style, you can use react-bootstrap npm: `npm install react-bootstrap bootstrap --save`
+
 Express Set Up
 ============
 
