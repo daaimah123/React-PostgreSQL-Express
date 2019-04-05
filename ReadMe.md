@@ -53,14 +53,14 @@ const pool = new Pool({
    // Use SSL but only in production
    ssl: process.env.NODE_ENV === 'production'
  });
-```
+````
 
 Check the package.json to make sure start location path matches the server location
 
-```
+````
 "scripts": {
      "start": "node folder/file.ext",
-```
+````
 
 
 In this app you will be able to: 
