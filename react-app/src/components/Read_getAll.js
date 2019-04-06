@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Card from 'react-bootstrap/Card';
 
 
 
@@ -40,13 +41,26 @@ class Read extends Component {
         return <div>Loading...</div>;
       } else {
         return (
-          <ul id="results">
-            {items/* {items.map(item => (
-              <li key={item.name}>
-                {item.name} {item.price}
-              </li>
-            ))} */}
-          </ul>
+          <div col>
+            {/* Want events to be in a row not in columns */}
+              {items.map(item => (
+                <div key={item.name} className="row"> 
+                  {/* <CardDeck> */}
+                  {/* <CardGroup> */}
+                  <Card border="dark" style={{ width: '18rem' }}>
+                      <Card.Header>Name: {item.name} </Card.Header>
+                      <Card.Body>
+                        <Card.Title>Height: {item.height}</Card.Title>
+                        <Card.Text>
+                          Hair: {item.hair_color} <br/> Skin: {item.skin_color} <br/> Eye: {item.eye_color}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  {/* </CardDeck> */}
+                  {/* </CardGroup> */}
+                  </div>
+              ))}
+          </div>
         );
       }
     }
