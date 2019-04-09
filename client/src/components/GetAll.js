@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 
 
-class Read extends Component {
+class GetAll extends Component {
     constructor(props) { //set up telling component what we need to start
       super(props);
       this.state = { //beginning state
@@ -14,8 +14,8 @@ class Read extends Component {
       };
     }
   
-    componentDidMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
-      fetch("/events")
+    componentWillMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
+      fetch("/test")
         .then(res => res.json()) //turn response into json
         .then( 
           (result) => { //use results in setState
@@ -49,10 +49,10 @@ class Read extends Component {
                   {/* <Card.Deck> */}
                   {/* <Card.Group> */}
                   <Card border="dark" style={{ width: '18rem', color: 'black'}}>
-                      <Card.Header>Name: {item.name} </Card.Header>
+                      <Card.Header>ID: {item.id} </Card.Header>
                       <Card.Body>
-                        <Card.Title>Date: {item.date}</Card.Title>
-                        <Card.Text> City: {item.city} <br/> Topic: {item.topic}
+                        <Card.Title>Name: {item.name}</Card.Title>
+                        <Card.Text> Location: {item.location}
                         </Card.Text>
                       </Card.Body>
                     </Card>
@@ -66,4 +66,4 @@ class Read extends Component {
     }
   }
 
-export default Read;
+export default GetAll;

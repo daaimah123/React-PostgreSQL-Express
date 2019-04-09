@@ -76,6 +76,19 @@ export default Read;
 
 For extra built in style, you can use react-bootstrap npm: `npm install react-bootstrap bootstrap --save`
 
+React Package.json
+````
+Front-End Port
+ "scripts": {
+    "start": "PORT=3000 react-scripts start",
+````
+
+````
+//Backend Port
+"proxy": "http://localhost:3003"
+````
+
+
 Express Set Up (in server dir - run node index.js to run)
 ============
 

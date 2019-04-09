@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Read from './components/Read_getAll.js';
-// import GetById from './components/ReadOne_getById.js';
+import GetAll from './components/GetAll.js/index.js';
+// import GetById from './components/GetById.js';
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
         <header className="App-header">
          <div className="col">
            <u>Get All</u>
-           <Read />
+           <GetAll />
          </div>
          <div className="col">
            <u>Get By ID</u>
