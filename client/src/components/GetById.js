@@ -22,7 +22,7 @@ class GetById extends React.Component {
     }
   
     handleSubmit(event) {
-      fetch(`/events/${this.state.value}`)//this is the result
+      fetch(`/test/${this.state.value}`)//this is the result
             .then((res) => {
             return res.json()})
             .then(

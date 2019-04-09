@@ -13,13 +13,16 @@ Begin react app
 Create component files and make sure they are imported (to files that are using them) and exported (in their own component) file appropiately.
 
 Example of importing to App.js from components
+
 ````
 import React, { Component } from 'react';
 import './App.css';
 import GetAll from './components/GetAll.js/index.js';
-import GetById from './components/GetById.js';````
+import GetById from './components/GetById.js';
+````
 
 Example of exporting from components to App.js
+
 
 ````
 //end of page after component class declaration

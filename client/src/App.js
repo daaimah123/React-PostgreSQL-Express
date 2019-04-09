@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import GetAll from './components/GetAll.js/index.js';
+import GetAll from './components/GetAll.js';
 // import GetById from './components/GetById.js';
 
 class App extends Component {
