@@ -15,7 +15,7 @@ class Read extends Component {
     }
   
     componentDidMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
-      fetch("https://swapi.co/api/people/")
+      fetch("https://localhost:3000")
         .then(res => res.json()) //turn response into json
         .then( 
           (result) => { //use results in setState
