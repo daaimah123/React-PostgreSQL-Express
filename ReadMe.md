@@ -5,74 +5,29 @@ Backend (3003) and Front-End (3000) will run on separate ports!
 
 React Set Up (in client dir - run npm start to run)
 =========
-
-REACT (subfolder - client)
-`npx create-react-app my-app`
-`cd my-app`
-`npm start`
+Begin react app
+````npx create-react-app my-app````
+````cd my-app````
+````npm start````
 
 Create component files and make sure they are imported (to files that are using them) and exported (in their own component) file appropiately.
 
-
-Exampe of Read.js (GET all) component file:
+Example of importing to App.js from components
 ````
 import React, { Component } from 'react';
-import '../App.css';
+import './App.css';
+import GetAll from './components/GetAll.js/index.js';
+import GetById from './components/GetById.js';````
 
+Example of exporting from components to App.js
 
-
-class Read extends Component {
-    constructor(props) { //set up telling component what we need to start
-      super(props);
-      this.state = { //beginning state
-        error: null, 
-        isLoaded: false, 
-        items: [] //info is stored here
-      };
-    }
-
-  //requests made in fetch
-    componentDidMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
-      fetch("https://swapi.co/api/people/") //test with external api
-        .then(res => res.json()) //turn response into json
-        .then( 
-          (result) => { //use results in setState
-            this.setState({
-              isLoaded: true, //the result state is changed to true
-              items: result.items //the result state is changed to the info thats been fetched and turned into json
-            });
-          },
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error // the error that's received 
-            });
-          }
-        )
-    }
-  
-    render() {
-      const { error, isLoaded, items } = this.state; //allows this.state to be assumed
-      if (error) {
-        return <div>Error: {error.message}</div>;
-      } else if (!isLoaded) {
-        return <div>Loading...</div>;
-      } else {
-        return (
-          <ul>
-            {items.map(item => (
-              <li key={item.name}>
-                {item.name} {item.price}
-              </li>
-            ))}
-          </ul>
-        );
-      }
-    }
-  }
-
-export default Read;
 ````
+//end of page after component class declaration
+export default GetById;
+//or
+export default GetAll;
+````
+
 
 For extra built in style, you can use react-bootstrap npm: `npm install react-bootstrap bootstrap --save`
 
