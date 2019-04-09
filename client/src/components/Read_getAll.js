@@ -15,13 +15,14 @@ class Read extends Component {
     }
   
     componentDidMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
-      fetch("https://localhost:3000")
+      fetch("/events")
         .then(res => res.json()) //turn response into json
         .then( 
           (result) => { //use results in setState
+            console.log(result)
             this.setState({
               isLoaded: true, //the result state is changed to true
-              items: result.items //the result state is changed to the info thats been fetched and turned into json
+              items: result//the result state is changed to the info thats been fetched and turned into json
             });
           },
           (error) => {
@@ -42,22 +43,21 @@ class Read extends Component {
       } else {
         return (
           <div col>
-            {/* Want events to be in a row not in columns */}
+            {/* FIXME: Want events to be in a wrapping row not in columns */}
               {items.map(item => (
                 <div key={item.name} className="row"> 
-                  {/* <CardDeck> */}
-                  {/* <CardGroup> */}
-                  <Card border="dark" style={{ width: '18rem' }}>
+                  {/* <Card.Deck> */}
+                  {/* <Card.Group> */}
+                  <Card border="dark" style={{ width: '18rem', color: 'black'}}>
                       <Card.Header>Name: {item.name} </Card.Header>
                       <Card.Body>
-                        <Card.Title>Height: {item.height}</Card.Title>
-                        <Card.Text>
-                          Hair: {item.hair_color} <br/> Skin: {item.skin_color} <br/> Eye: {item.eye_color}
+                        <Card.Title>Date: {item.date}</Card.Title>
+                        <Card.Text> City: {item.city} <br/> Topic: {item.topic}
                         </Card.Text>
                       </Card.Body>
                     </Card>
-                  {/* </CardDeck> */}
-                  {/* </CardGroup> */}
+                  {/* </ Card.Deck> */}
+                  {/* </Card.Group> */}
                   </div>
               ))}
           </div>

@@ -1,15 +1,10 @@
 Design a React App that uses Express and PostgreSQL
 ===========
-Backend (3001) and Front-End (3000) will run on separate ports!
+Backend (3003) and Front-End (3000) will run on separate ports!
 
 
-React Set Up
+React Set Up (in client dir - run npm start to run)
 =========
-
-NODE
-`nvm install node`
-`nvm use node`
-
 
 REACT (subfolder - client)
 `npx create-react-app my-app`
@@ -35,7 +30,8 @@ class Read extends Component {
         items: [] //info is stored here
       };
     }
-  
+
+  //requests made in fetch
     componentDidMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
       fetch("https://swapi.co/api/people/") //test with external api
         .then(res => res.json()) //turn response into json
@@ -80,8 +76,12 @@ export default Read;
 
 For extra built in style, you can use react-bootstrap npm: `npm install react-bootstrap bootstrap --save`
 
-Express Set Up
+Express Set Up (in server dir - run node index.js to run)
 ============
+
+NODE
+`nvm install node`
+`nvm use node` 
 
 Express Generator (server)similar to create react app: `npm install express-generator --save`
 
@@ -139,8 +139,8 @@ app.get('/', (request, response) => {
     response.json({ info: "Test Message Testing" })
     })
 
-//testing ability to connect to db
-app.get('/anythingiwant', async (req, res) =>{
+//testing ability to connect to db using async/await querying
+app.get('/events', async (req, res) =>{
     const client = await pool.connect(); //make request with client inside the pool
     const contactsTable = await client.query('SELECT * FROM events'); //query that runs to pull pg data
     res.json(contactsTable.rows); //the queried data as response in json form

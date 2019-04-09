@@ -4,7 +4,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3001; //back end port assigned to 3001
+const port = process.env.PORT || 3003; //back end port assigned to 3001
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,7 +48,7 @@ app.get('/events', async (req, res) =>{
     const contactsTable = await client.query('SELECT * FROM events');
     res.json(contactsTable.rows);
     client.release();
-    console.log('GET QUERY IS WORKING') ///testing for true connection
+    console.log('GET QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
 
 //monday 4/8/19 - 5, 6, 7 id's
@@ -59,6 +59,7 @@ app.get('/events/:id', async (req, res) =>{
   const eventsTable = await client.query('SELECT * FROM events WHERE id = $1', [req.params.id]); 
   res.json(eventsTable.rows[0]); 
   client.release();
+  console.log('GET BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
 
 //update an array item //TODO: posting all at oncee, only works with 5 given params
@@ -67,15 +68,16 @@ app.put('/events/:id', async (req, res) =>{
   const eventsTable = await client.query("UPDATE events SET name=$1, city=$2, date=$3, topic=$4 WHERE id=$5 RETURNING *", [req.body.name,req.body.city,req.body.date,req.body.topic, req.params.id]);
   client.release();
   res.json(eventsTable.rows[0]) 
-
+  console.log('PUT QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
 
 //add a new item //TODO: posting all at once, only works with 5 given params
-app.post('/events', async(req, res) =>{
+app.post('/events', async(req, res) => {
   const client = await pool.connect();
   const eventsTable = await client.query("INSERT INTO events (id, name, city, date, topic) VALUES ($1, $2, $3, $4, $5) RETURNING *", [req.body.id, req.body.name, req.body.city, req.body.date, req.body.topic]);
   res.json(eventsTable.rows[0]);
   client.release();
+  console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
 
 //delete an item //TODO: posting all at once
@@ -84,6 +86,7 @@ app.delete('/events/:id', async(req, res) =>{
   const eventsTable = await client.query('DELETE FROM events WHERE id=$1 RETURNING * ', [req.params.id]);
   res.json(eventsTable.rows[0]);
   client.release();
+  console.log('DELETE QUERY IS WORKING ON BACKEND') ///testing for true connection
 });
 
 
