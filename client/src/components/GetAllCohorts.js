@@ -44,20 +44,15 @@ class GetAllCohorts extends Component {
       } else {
         return (
           <div className="card-group">
-            {/* FIXME: Want events to be in a wrapping row not in columns */}
               {items.map(item => (
                 <div key={item.name} className="row"> 
-                  {/* <Card.Deck> */}
-                  {/* <Card.Group> */}
                   <Card border="dark" style={{ width: '18rem', color: 'black'}}>
                       <Card.Header>Apprentice ID: {item.apprentice_id} </Card.Header>
                       <Card.Body>
-                        <Card.Text> {item.city}</Card.Text>
-                        <Card.Text>{item.year}</Card.Text>
+                        <Card.Text>Year: {item.year}</Card.Text>
+                        <Card.Text>City: {item.city}</Card.Text>
                       </Card.Body>
                     </Card>
-                  {/* </ Card.Deck> */}
-                  {/* </Card.Group> */}
                   </div>
               ))}
           </div>
