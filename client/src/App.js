@@ -21,7 +21,7 @@ class App extends Component {
          <div className="col">
            <u>Get Apprentice ID</u>
            <GetApprenticeById />
-           POST
+           <u>POST</u>
             <CreatePost />
          </div>
         </header>

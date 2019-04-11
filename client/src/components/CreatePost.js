@@ -50,7 +50,7 @@ class CreatePost extends Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div>Perpetual Loading...</div>;
     } else {
       return (
         <div className="card-group">
