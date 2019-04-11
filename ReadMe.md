@@ -32,7 +32,8 @@ export default GetAll;
 ````
 
 
-For extra built in style, you can use react-bootstrap npm: `npm install react-bootstrap bootstrap --save`
+For extra built in style, you can use react-bootstrap npm: `npm install react-
+bootstrap bootstrap --save`
 
 React Package.json
 ````
@@ -142,3 +143,6 @@ In this app you will be able to:
 -add DB tables to Postgres;
 -add routes to Express that interact with the DB;
 -add components to React that calls the Express APIs
+
+Final Product
+![Uploading Screen Shot 2019-04-11 at 4.29.48 PM.png…]()
