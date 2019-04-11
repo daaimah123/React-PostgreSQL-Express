@@ -47,7 +47,7 @@ class GetApprenticeById extends Component {
                 }
             )
 //TODO: can I change this to be a line that appears on screen after submitting instead of alert
-    // alert(this.state.value + ' was submitted.');
+  alert(this.state.value);
     //displayMe //FIXME: want to display chosen id info and display
     
     event.preventDefault(); //TODO: need further explaination, and wth is the default
@@ -56,7 +56,7 @@ class GetApprenticeById extends Component {
   
     render() {
       // console.log(this.state.item.result)
-      const { value } = this.state; //allows this.state to be assumed
+      const { value, result, item } = this.state; //allows this.state to be assumed
       const { handleSubmit, handleChange } = this; 
       return (
         <section>
@@ -67,9 +67,10 @@ class GetApprenticeById extends Component {
             </label>
             <input type="submit" value="Submit" />
           </form>
-          <div style={{color: "white"}}>
-          {/* {this.state.item ? this.state.item.result.first_name : null} */}
-          </div>
+          
+          {/* <div style={{color: "white"}}>
+          {item ? item.result.first_name : null}
+          </div> */}
         {/* TODO: should show after click to Submit // ComponentDidMount or ComponentDidUpdate or UpdateDidMount */}
          {/* {items.map(item => ( */}
           {/* <div key={item.name} className="row">  */}
