@@ -3,6 +3,9 @@ import './App.css';
 import GetAllApprentices from './components/GetAllApprentices.js';
 import GetAllCohorts from './components/GetAllCohorts.js';
 import GetApprenticeById from './components/GetApprenticeById.js';
+import CreatePost from './components/CreatePost';
+
+
 
 class App extends Component {
   render() {
@@ -18,6 +21,8 @@ class App extends Component {
          <div className="col">
            <u>Get Apprentice ID</u>
            <GetApprenticeById />
+           POST
+            <CreatePost />
          </div>
         </header>
       </div>
