@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-// import Card from 'react-bootstrap/Card';
+import Card from 'react-bootstrap/Card';
 
 
 class GetApprenticeById extends Component {
@@ -40,10 +40,6 @@ class GetApprenticeById extends Component {
                     error
                 });
                 console.log({error})
-                //FIXME: not showing
-                // console.log("Name" + this.item.state.name)
-                // console.log("Date" + this.item.state.date)
-                // console.log("City" + this.item.state.city)
                 }
             )
 //TODO: can I change this to be a line that appears on screen after submitting instead of alert
@@ -56,7 +52,7 @@ class GetApprenticeById extends Component {
   
     render() {
       // console.log(this.state.item.result)
-      const { value, result, item } = this.state; //allows this.state to be assumed
+      const { value, result, item, items } = this.state; //allows this.state to be assumed
       const { handleSubmit, handleChange } = this; 
       return (
         <section>
@@ -70,24 +66,24 @@ class GetApprenticeById extends Component {
           
           {/* <div style={{color: "white"}}>
           {item ? item.result.first_name : null}
-          </div> */}
+          </div>  */}
         {/* TODO: should show after click to Submit // ComponentDidMount or ComponentDidUpdate or UpdateDidMount */}
-         {/* {items.map(item => ( */}
-          {/* <div key={item.name} className="row">  */}
+         {items.map(item => ( 
+           <div key={item.name} className="row"> 
             {/* <CardDeck> */}
             {/* <CardGroup> */}
-            {/* <Card border="dark" style={{ width: '18rem', color: 'black'}}>
+            <Card border="dark" style={{ width: '18rem', color: 'black'}}>
                 <Card.Header>Name: {item.name} </Card.Header>
                 <Card.Body>
                   <Card.Title>Date: {item.date}</Card.Title>
                   <Card.Text> City: {item.city} <br/> Topic: {item.topic}
                   </Card.Text>
                 </Card.Body>
-              </Card> */}
+              </Card>
             {/* </CardDeck> */}
             {/* </CardGroup> */}
-            {/* </div> */}
-        {/* ))} */}
+            </div>
+         ))}
         </section>
       );
     }

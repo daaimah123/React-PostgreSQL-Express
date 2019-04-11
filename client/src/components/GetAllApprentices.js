@@ -44,11 +44,8 @@ class GetAllApprentices extends Component {
       } else {
         return (
           <div className="card-group">
-            {/* FIXME: Want events to be in a wrapping row not in columns */}
               {items.map(item => (
                 <div key={item.name} className="row"> 
-                  {/* <Card.Deck> */}
-                  {/* <Card.Group> */}
                   <Card border="dark" style={{ width: '18rem', color: 'black'}}>
                       <Card.Header>Student Number: {item.id} </Card.Header>
                       <Card.Body>
@@ -56,8 +53,6 @@ class GetAllApprentices extends Component {
                         <Card.Text> </Card.Text>
                       </Card.Body>
                     </Card>
-                  {/* </ Card.Deck> */}
-                  {/* </Card.Group> */}
                   </div>
               ))}
           </div>

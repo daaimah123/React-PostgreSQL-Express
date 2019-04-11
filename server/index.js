@@ -78,13 +78,13 @@ app.get('/techtonica/apprentices/:id', async (req, res) =>{
 // })
 
 // // //add a new item //TODO: posting all at once, only works with 5 given params
-// app.post('/techtonica/apprentices', async(req, res) => {
-//   const client = await pool.connect();
-//   const eventsTable = await client.query("INSERT INTO apprentices (id, first_name, last_name) VALUES ($1, $2, $3) RETURNING *", [req.body.id, req.body.first_name, req.body.last_name]);
-//   res.json(eventsTable.rows[0]);
-//   client.release();
-//   console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
+app.post('/techtonica/apprentices', async(req, res) => {
+  const client = await pool.connect();
+  const eventsTable = await client.query("INSERT INTO apprentices (id, first_name, last_name) VALUES ($1, $2, $3) RETURNING *", [req.body.id, req.body.first_name, req.body.last_name]);
+  res.json(eventsTable.rows[0]);
+  client.release();
+  console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
+})
 
 // //delete an item //TODO: posting all at once
 // app.delete('/techtonica/:id', async(req, res) =>{
