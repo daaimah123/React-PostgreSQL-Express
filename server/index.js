@@ -20,7 +20,7 @@ const { Pool } = require('pg')
 const pool = new Pool({
     user: 'codetl',
     host: 'localhost',
-    database: 'test_data', //database_name
+    database: 'techtonica', //database_name
     password: 'password',
     port: 5432,
   })
@@ -42,48 +42,54 @@ app.get('/', (request, response) => {
     response.json({ info: "Test Message Testing" })
     })
 
-//testing ability to connect to db
-app.get('/test', async (req, res) =>{
+//apprentices table get all
+app.get('/techtonica/apprentices', async (req, res) => {
     const client = await pool.connect();
-    const contactsTable = await client.query('SELECT * FROM test_tale');
+    const contactsTable = await client.query('SELECT * FROM apprentices');
     res.json(contactsTable.rows);
     client.release();
     console.log('GET QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
+//cohorts table get all
+app.get('/techtonica/cohorts', async (req, res) => {
+  const client = await pool.connect();
+  const contactsTable = await client.query('SELECT * FROM cohorts');
+  res.json(contactsTable.rows);
+  client.release();
+  console.log('GET QUERY IS WORKING ON BACKEND') ///testing for true connection
+})
 
-//monday 4/8/19 - 5, 6, 7 id's
-//**********SUCCESSFUL********
 //return single arr item
-// app.get('/test/:id', async (req, res) =>{
-//   const client = await pool.connect();
-//   const eventsTable = await client.query('SELECT * FROM test_tale WHERE id = $1', [req.params.id]); 
-//   res.json(eventsTable.rows[0]); 
-//   client.release();
-//   console.log('GET BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
+app.get('/techtonica/:id', async (req, res) =>{
+  const client = await pool.connect();
+  const eventsTable = await client.query('SELECT * FROM apprentices WHERE id = $1', [req.params.id]); 
+  res.json(eventsTable.rows[0]); 
+  client.release();
+  console.log('GET BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
+})
 
 // //update an array item //TODO: posting all at oncee, only works with 5 given params
-// app.put('/test/:id', async (req, res) =>{ 
-//   const client = await pool.connect();
-//   const eventsTable = await client.query("UPDATE test_tale SET name=$1, city=$2, date=$3, topic=$4 WHERE id=$5 RETURNING *", [req.body.name,req.body.city,req.body.date,req.body.topic, req.params.id]);
-//   client.release();
-//   res.json(eventsTable.rows[0]) 
-//   console.log('PUT QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
+app.put('/techtonica/apprentices/:id', async (req, res) =>{ 
+  const client = await pool.connect();
+  const eventsTable = await client.query("UPDATE apprentices SET first_name=$1, last_name=$2, WHERE id=$3 RETURNING *", [req.body.first_name,req.body.last_name,req.body.id,]);
+  client.release();
+  res.json(eventsTable.rows[0]) 
+  console.log('PUT QUERY IS WORKING ON BACKEND') ///testing for true connection
+})
 
 // //add a new item //TODO: posting all at once, only works with 5 given params
-// app.post('/test', async(req, res) => {
-//   const client = await pool.connect();
-//   const eventsTable = await client.query("INSERT INTO test_tale (id, name, city, date, topic) VALUES ($1, $2, $3, $4, $5) RETURNING *", [req.body.id, req.body.name, req.body.city, req.body.date, req.body.topic]);
-//   res.json(eventsTable.rows[0]);
-//   client.release();
-//   console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
+app.post('/techtonica/apprentices', async(req, res) => {
+  const client = await pool.connect();
+  const eventsTable = await client.query("INSERT INTO apprentices (id, first_name, last_name) VALUES ($1, $2, $3) RETURNING *", [req.body.id, req.body.first_name, req.body.last_name]);
+  res.json(eventsTable.rows[0]);
+  client.release();
+  console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
+})
 
 // //delete an item //TODO: posting all at once
-// app.delete('/test/:id', async(req, res) =>{
+// app.delete('/techtonica/:id', async(req, res) =>{
 //   const client = await pool.connect();
-//   const eventsTable = await client.query('DELETE FROM test_tale WHERE id=$1 RETURNING * ', [req.params.id]);
+//   const eventsTable = await client.query('DELETE FROM !!!!TABLE NAME!!!! WHERE id=$1 RETURNING * ', [req.params.id]);
 //   res.json(eventsTable.rows[0]);
 //   client.release();
 //   console.log('DELETE QUERY IS WORKING ON BACKEND') ///testing for true connection

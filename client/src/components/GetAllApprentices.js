@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 
 
-class GetAll extends Component {
+class GetAllApprentices extends Component {
     constructor(props) { //set up telling component what we need to start
       super(props);
       this.state = { //beginning state
@@ -15,7 +15,7 @@ class GetAll extends Component {
     }
   
     componentWillMount() { //system in react, auto generates the function inside to go first; will not work when you need to manipulate info or provide info; auto-gets
-      fetch("/test")
+      fetch("/techtonica/apprentices")
         .then(res => res.json()) //turn response into json
         .then( 
           (result) => { //use results in setState
@@ -32,6 +32,7 @@ class GetAll extends Component {
             });
           }
         )
+      
     }
   
     render() {
@@ -42,18 +43,17 @@ class GetAll extends Component {
         return <div>Loading...</div>;
       } else {
         return (
-          <div col>
+          <div className="card-group">
             {/* FIXME: Want events to be in a wrapping row not in columns */}
               {items.map(item => (
                 <div key={item.name} className="row"> 
                   {/* <Card.Deck> */}
                   {/* <Card.Group> */}
                   <Card border="dark" style={{ width: '18rem', color: 'black'}}>
-                      <Card.Header>ID: {item.id} </Card.Header>
+                      <Card.Header>Student Number: {item.id} </Card.Header>
                       <Card.Body>
-                        <Card.Title>Name: {item.name}</Card.Title>
-                        <Card.Text> Location: {item.location}
-                        </Card.Text>
+                        <Card.Text> {item.first_name} {item.last_name}</Card.Text>
+                        <Card.Text> </Card.Text>
                       </Card.Body>
                     </Card>
                   {/* </ Card.Deck> */}
@@ -66,4 +66,4 @@ class GetAll extends Component {
     }
   }
 
-export default GetAll;
+export default GetAllApprentices;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 
 
-class GetById extends React.Component {
+class GetApprenticeById extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -22,7 +22,7 @@ class GetById extends React.Component {
     }
   
     handleSubmit(event) {
-      fetch(`/test/${this.state.value}`)//this is the result
+      fetch(`/techtonica/apprentices/${this.state.value}`)//this is the result
             .then((res) => {
             return res.json()})
             .then(
@@ -31,7 +31,7 @@ class GetById extends React.Component {
                     isLoaded: true,
                     item: result, //saving obj from 1 event into item obj
                 });
-                console.log({result})
+                console.log('result: ' , {result})
                 },
                 // Note: it's important to handle errors here instead of a catch() block so that we don't swallow exceptions from actual bugs in components.
                 (error) => {
@@ -47,25 +47,30 @@ class GetById extends React.Component {
                 }
             )
 //TODO: can I change this to be a line that appears on screen after submitting instead of alert
-    alert('An event name was submitted: ' + this.state.value);
-    console.log("name: " + this.state.item.name)
+    // alert(this.state.value + ' was submitted.');
+    //displayMe //FIXME: want to display chosen id info and display
+    
     event.preventDefault(); //TODO: need further explaination, and wth is the default
      }
 
   
     render() {
+      // console.log(this.state.item.result)
       const { value } = this.state; //allows this.state to be assumed
       const { handleSubmit, handleChange } = this; 
       return (
         <section>
           <form onSubmit={handleSubmit}>
             <label>
-              Get An Event:
+              Input An ID Number:
               <input type="text" value={value} onChange={handleChange} />
             </label>
             <input type="submit" value="Submit" />
           </form>
-        {/* TODO: should show after click to Submit */}
+          <div style={{color: "white"}}>
+          {/* {this.state.item ? this.state.item.result.first_name : null} */}
+          </div>
+        {/* TODO: should show after click to Submit // ComponentDidMount or ComponentDidUpdate or UpdateDidMount */}
          {/* {items.map(item => ( */}
           {/* <div key={item.name} className="row">  */}
             {/* <CardDeck> */}
@@ -81,8 +86,7 @@ class GetById extends React.Component {
             {/* </CardDeck> */}
             {/* </CardGroup> */}
             {/* </div> */}
-          
-        ))}
+        {/* ))} */}
         </section>
       );
     }
@@ -91,4 +95,4 @@ class GetById extends React.Component {
     
 
 
-  export default GetById;
+  export default GetApprenticeById;
