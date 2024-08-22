@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // pool manages postgreSQL clients;
 const { Pool } = require('pg')
 const pool = new Pool({
-    user: 'codetl',
+    user: 'daaimahtibrey',
     host: 'localhost',
     database: 'techtonica', //database_name
     password: 'password',
@@ -68,14 +68,6 @@ app.get('/techtonica/apprentices/:id', async (req, res) =>{
   console.log('GET SINGLE APPRENTICE BY ID QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
 
-// //update an array item //TODO: posting all at oncee, only works with 5 given params
-// app.put('/techtonica/apprentices/:id', async (req, res) =>{ 
-//   const client = await pool.connect();
-//   const eventsTable = await client.query("UPDATE apprentices SET first_name=$1, last_name=$2, WHERE id=$3 RETURNING *", [req.body.first_name,req.body.last_name,req.body.id,]);
-//   client.release();
-//   res.json(eventsTable.rows[0]) 
-//   console.log('PUT QUERY IS WORKING ON BACKEND') ///testing for true connection
-// })
 
 // // //add a new item //TODO: posting all at once, only works with 5 given params
 app.post('/techtonica/apprentices', async(req, res) => {
@@ -86,14 +78,6 @@ app.post('/techtonica/apprentices', async(req, res) => {
   console.log('POST QUERY IS WORKING ON BACKEND') ///testing for true connection
 })
 
-// //delete an item //TODO: posting all at once
-// app.delete('/techtonica/:id', async(req, res) =>{
-//   const client = await pool.connect();
-//   const eventsTable = await client.query('DELETE FROM !!!!TABLE NAME!!!! WHERE id=$1 RETURNING * ', [req.params.id]);
-//   res.json(eventsTable.rows[0]);
-//   client.release();
-//   console.log('DELETE QUERY IS WORKING ON BACKEND') ///testing for true connection
-// });
 
 
 

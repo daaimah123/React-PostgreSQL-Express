@@ -1,10 +1,8 @@
-Design a React App that uses Express and PostgreSQL
-===========
+### Design a React App that uses Express and PostgreSQL
 Backend (3003) and Front-End (3000) will run on separate ports!
 
 
-React Set Up (in client dir - run npm start to run)
-=========
+### React Set Up (in client dir - run npm start to run)
 Begin react app
 ````npx create-react-app my-app````
 ````cd my-app````
@@ -48,8 +46,7 @@ React Package.json
 ````
 
 
-Express Set Up (in server dir - run node index.js to run)
-============
+### Express Set Up (in server dir - run node index.js to run)
 
 NODE
 `nvm install node`

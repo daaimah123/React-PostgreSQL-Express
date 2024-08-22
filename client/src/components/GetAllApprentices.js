@@ -19,7 +19,7 @@ class GetAllApprentices extends Component {
         .then(res => res.json()) //turn response into json
         .then( 
           (result) => { //use results in setState
-            console.log(result)
+            // console.log(result)
             this.setState({
               isLoaded: true, //the result state is changed to true
               items: result//the result state is changed to the info thats been fetched and turned into json
@@ -45,7 +45,7 @@ class GetAllApprentices extends Component {
         return (
           <div className="card-group">
               {items.map(item => (
-                <div key={item.name} className="row"> 
+                <div key={item.id} className="row"> 
                   <Card border="dark" style={{ width: '18rem', color: 'black'}}>
                       <Card.Header>Student Number: {item.id} </Card.Header>
                       <Card.Body>

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Card from 'react-bootstrap/Card';
-
 
 class CreatePost extends Component {
   constructor(props) {
@@ -15,6 +13,7 @@ class CreatePost extends Component {
 
   componentDidMount() {
     var data = {
+      id: 5,
       first_name: 'Wilmar', 
       last_name: 'Wallabee'
     };
@@ -25,12 +24,12 @@ class CreatePost extends Component {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => res.json())
+      .then(res => {return res.json()})
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result.items
+            items: result
           });
         },
         // Note: it's important to handle errors here
@@ -54,21 +53,7 @@ class CreatePost extends Component {
     } else {
       return (
         <div className="card-group">
-            {items.map(item => (
-              <div key={item.name} className="row"> 
-                {/* <Card.Deck> */}
-                {/* <Card.Group> */}
-                <Card border="dark" style={{ width: '18rem', color: 'black'}}>
-                    <Card.Header>Student Number: {item.id} </Card.Header>
-                    <Card.Body>
-                      <Card.Text> {item.first_name} {item.last_name}</Card.Text>
-                      <Card.Text> </Card.Text>
-                    </Card.Body>
-                  </Card>
-                {/* </ Card.Deck> */}
-                {/* </Card.Group> */}
-                </div>
-            ))}
+          {items.first_name} {items.last_name}
         </div>
       );
     }

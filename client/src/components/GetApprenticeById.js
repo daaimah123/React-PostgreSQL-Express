@@ -22,8 +22,7 @@ class GetApprenticeById extends Component {
 
     handleSubmit(event) {
       fetch(`/techtonica/apprentices/${this.state.value}`)//this is the result
-            .then((res) => {
-            return res.json()})
+            .then(res => res.json())
             .then(
                 (result) => {
                 this.setState({
@@ -32,13 +31,13 @@ class GetApprenticeById extends Component {
                 });
                 console.log('>>>>>>>>>>YOU FOUND THE RESULTS<<<<<<<<< ' , {result})
                 },
-                (error) => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                });
-                console.log({error})
-                }
+                // (error) => {
+                // this.setState({
+                //     isLoaded: true,
+                //     error
+                // });
+                // console.log({error})
+                // }
             )
     event.preventDefault();
      }
