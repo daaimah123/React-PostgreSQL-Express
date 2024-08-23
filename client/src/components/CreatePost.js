@@ -6,54 +6,81 @@ class CreatePost extends Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
-      items: []
+      isLoaded: true,
+      firstName: '',
+      lastName: '',
     };
   }
 
-  componentDidMount() {
-    var data = {
-      id: 5,
-      first_name: 'Wilmar', 
-      last_name: 'Wallabee'
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
     };
+  
     fetch("/techtonica/apprentices", {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers:{
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => {return res.json()})
+      .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result
+            items: result, // Assuming the response includes the newly created apprentice's details
+            firstName: '', // Reset input fields
+            lastName: '',
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
             error
           });
         }
-      )
-  }
+      );
+  };  
 
   render() {
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, firstName, lastName } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Perpetual Loading...</div>;
     } else {
       return (
         <div className="card-group">
-          {items.first_name} {items.last_name}
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              First Name:
+              <input
+                type="text"
+                name="firstName"
+                value={firstName}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
+            <label>
+              Last Name:
+              <input
+                type="text"
+                name="lastName"
+                value={lastName}
+                onChange={this.handleChange}
+                required
+              />
+            </label>
+            <button type="submit">Create Post</button>
+          </form>
         </div>
       );
     }
